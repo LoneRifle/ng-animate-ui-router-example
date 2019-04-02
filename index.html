@@ -9,10 +9,16 @@
 <body>
     <!-- header -->
     <header>
-        <ul class="nav nav-tabs">
-            <li ng-class="{active: currentState.match('^overview')}"><a ui-sref="overview">Overview</a></li>
-            <li ng-class="{active: currentState.match('^product')}"><a ui-sref="products">Products</a></li>
-        </ul>
+        <uib-tabset class="nav nav-tabs">
+            <uib-tab
+              heading="Overview"
+              ui-sref="overview">
+            </uib-tab>
+            <uib-tab
+              heading="Products"
+              ui-sref="products">
+            </uib-tab>
+        </uib-tabset>
     </header>
 
     <!-- main -->
