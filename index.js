@@ -4,8 +4,8 @@ require('angular-ui-router')
 
 require('angular-ui-bootstrap')
 
-require('./app.js')
-require('./app-services/product.service.js')
-require('./overview/main.controller.js')
-require('./products/main.controller.js')
-require('./products/add-edit.controller.js')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AppController from './components/AppController.jsx'
+
+ReactDOM.render(<AppController />, document.getElementById('root'));
