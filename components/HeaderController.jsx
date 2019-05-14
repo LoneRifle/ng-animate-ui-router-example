@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import router from './uirouter.jsx'
 
 class HeaderController extends Component {
   constructor (props) {
@@ -7,7 +8,11 @@ class HeaderController extends Component {
 
   componentDidMount() {
     this.$rootScope = angular.injector(['ng', 'app']).get('$rootScope')
-    angular.bootstrap(this.container, ['app']);
+    const $injector = angular.bootstrap(this.container, ['app']);
+    const $state = $injector.get('$state')
+    $state.go = (state, params) => {
+      router.stateService.go(state, params)
+    }
   }
 
   componentWillUnmount () {
