@@ -29,6 +29,13 @@ const states = [
     name: 'products.edit',
     url: '/edit/:id',
     component: AddEdit,
+    resolve: [
+      {
+        token: 'params',
+        deps: ['$transition$'],
+        resolveFn: trans => trans.params(),
+      }
+    ],
   },
 ]
 

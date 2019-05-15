@@ -4,6 +4,12 @@ import router from '../uirouter.jsx'
 class AddEdit extends Component {
   constructor (props) {
     super(props)
+    this.params = props.params
+
+    if (this.params) {
+      const $stateParams = angular.injector(['ng', 'app']).get('$stateParams')
+      $stateParams.id = this.params.id
+    }
     require('../../products/add-edit.controller.js')
   }
 
@@ -24,6 +30,7 @@ class AddEdit extends Component {
     return (
     <div className="view-side-form">
       <div
+        ng-controller="Products.AddEditController"
         className="side-form"
         ref={c => this.container = c}
         dangerouslySetInnerHTML={{__html: `

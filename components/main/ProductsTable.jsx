@@ -23,6 +23,7 @@ class ProductsTable extends Component {
   render () {
     return (
     <div
+      ng-controller="Products.MainController"
       ref={c => this.container = c}
       dangerouslySetInnerHTML={{__html: `
       
@@ -33,10 +34,10 @@ class ProductsTable extends Component {
               <th>Price</th>
               <th class="delete-column"></th>
           </tr>
-          <tr ng-repeat="product in vm.products">
+          <tr ng-repeat="product in list.products">
               <td><a ui-sref="products.edit({ id: product.id })">{{product.name}}</a></td>
               <td>\${{product.price}}</td>
-              <td><a ng-click="vm.deleteProduct(product.id)" class="btn btn-xs btn-danger">Delete</a></td>
+              <td><a ng-click="list.deleteProduct(product.id)" class="btn btn-xs btn-danger">Delete</a></td>
           </tr>
       </table>
 
