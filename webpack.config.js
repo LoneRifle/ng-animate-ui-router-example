@@ -7,7 +7,7 @@ module.exports = [
     module: {
       rules: [
         {
-          test: /\.(js|jsx)$/,
+          test: /\.js$/,
           loader: 'babel-loader',
           query: {
             compact: false,
@@ -19,5 +19,6 @@ module.exports = [
       path: path.resolve(__dirname, './dist'),
       filename: 'bundle.js',
     },
+    devtool: 'source-map',
   }
 ]
