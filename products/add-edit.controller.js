@@ -6,11 +6,13 @@
         .controller('Products.AddEditController', Controller);
 
     function Controller($scope, $state, $stateParams, ProductService) {
-        var vm = this;
+        var vm = {};
 
         vm.title = 'Add Product';
         vm.product = {};
         vm.saveProduct = saveProduct;
+
+        $scope.vm = vm
 
         initController();
 
@@ -29,7 +31,7 @@
             $state.go('products');
 
             // emit event so list controller can refresh
-            $scope.$emit('products-updated');
+            window.events.emit('products-updated');
         }
     }
 

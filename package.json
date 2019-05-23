@@ -36,6 +36,7 @@
     "angular-animate": "^1.4.14",
     "angular-ui-bootstrap": "^0.14.3",
     "angular-ui-router": "^0.2.15",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6"
   }
 }

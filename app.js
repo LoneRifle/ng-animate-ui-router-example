@@ -3,39 +3,18 @@
 
     angular
         .module('app', ['ui.router', 'ngAnimate', 'ui.bootstrap'])
-        .config(config)
-        .run(run);
-
-    function config($stateProvider, $urlRouterProvider) {
-        // default route
-        $urlRouterProvider.otherwise("/");
-
-        $stateProvider
-            .state('overview', {
-                url: '/',
-                templateUrl: 'overview/main.html',
-                controller: 'Overview.MainController',
-                controllerAs: 'vm'
-            })
-            .state('products', {
-                url: '/products',
-                templateUrl: 'products/main.html',
-                controller: 'Products.MainController',
-                controllerAs: 'vm'
-            })
-                .state('products.add', {
-                    url: '/add',
-                    templateUrl: 'products/add-edit.html',
-                    controller: 'Products.AddEditController',
-                    controllerAs: 'vm'
-                })
-                .state('products.edit', {
-                    url: '/edit/:id',
-                    templateUrl: 'products/add-edit.html',
-                    controller: 'Products.AddEditController',
-                    controllerAs: 'vm'
-                });
-    }
+        .run(run)
+        .run(($browser) => {
+            $browser.url = function (url) {
+                if (url) {
+                    // setter is now a noop
+                    return $browser
+                } else {
+                    // getter always returns ''
+                    return ''
+                }
+            }
+        })
 
     function run($rootScope, ProductService) {
         // add some initial products

@@ -6,10 +6,12 @@
         .controller('Products.MainController', Controller);
 
     function Controller($scope, ProductService) {
-        var vm = this;
+        var list = {};
 
-        vm.products = [];
-        vm.deleteProduct = deleteProduct;
+        list.products = [];
+        list.deleteProduct = deleteProduct;
+
+        $scope.list = list
 
         initController();
 
@@ -17,11 +19,14 @@
             loadProducts();
 
             // reload products when updated
-            $scope.$on('products-updated', loadProducts);
+            window.events.on('products-updated', () => {
+                loadProducts()
+                $scope.$digest()
+            });
         }
 
         function loadProducts() {
-            vm.products = ProductService.GetAll();
+            list.products = ProductService.GetAll();
         }
 
         function deleteProduct(id) {

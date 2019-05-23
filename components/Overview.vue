@@ -1,0 +1,13 @@
+<template>
+  <div>
+    <h1>Overview</h1>
+    <p>ngAnimate (1.4.8) transition example with UI-Router</p>
+  </div>
+</template>
+<script>
+
+export default {
+
+}
+
+</script>

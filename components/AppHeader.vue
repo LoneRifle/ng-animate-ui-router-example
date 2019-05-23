@@ -25,7 +25,11 @@ export default {
   },
   mounted () {
     this.$rootScope = angular.injector(['ng', 'app']).get('$rootScope')
-    angular.bootstrap(this.$refs.ngApp, ['app'])
+    const $injector = angular.bootstrap(this.$refs.ngApp, ['app'])
+    const $state = $injector.get('$state')
+    $state.go = (state, params) => {
+      this.$router.push(params ? { name: state, params } : { name: state })
+    }
   },
   beforeDestroy () {
     this.$rootScope.destroy()
