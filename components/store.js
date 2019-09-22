@@ -32,7 +32,7 @@ const products = {
     },
   },
   getters: {
-    byId (state, id) {
+    byId: (state) => (id) => {
       return state.products.find(v => v.id === id)
     },
   },
